@@ -70,5 +70,10 @@ namespace VozDelEsteMaui3.Data.Repositorios
         {
             return _contexto.Table<Usuario?>().Where(e => e.Alias == alias).FirstOrDefaultAsync();
         }
+
+        public Task<Usuario?> ObtenerUsuarioPorEmail(string email)
+        {
+            return _contexto.Table<Usuario?>().Where(e => e.Email == email).FirstOrDefaultAsync();
+        }
     }
 }

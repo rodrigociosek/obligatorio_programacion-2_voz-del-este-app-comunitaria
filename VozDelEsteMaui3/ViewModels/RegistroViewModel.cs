@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -80,6 +81,51 @@ namespace VozDelEsteMaui3.ViewModels
         [RelayCommand]
         private async Task Registrar() // Genera "RegistrarCommand"
         {
+            if (string.IsNullOrWhiteSpace(Alias))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Falta el alias", "OK");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Clave))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Falta la contraseña", "OK");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(NombreCompleto))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Falta el nombre completo", "OK");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Telefono))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Falta el teléfono", "OK");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Falta el email", "OK");
+                return;
+            }
+            if (!new EmailAddressAttribute().IsValid(Email))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "El email no es válido", "OK");
+                return;
+            }
+
+            var aliasExistente = await _usuarioRepositorio.ObtenerUsuarioPorAlias(Alias);
+            if (aliasExistente != null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "El alias ya está registrado", "OK");
+                return;
+            }
+
+            var emailExistente = await _usuarioRepositorio.ObtenerUsuarioPorEmail(Email);
+            if (emailExistente != null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "El email ya está registrado", "OK");
+                return;
+            }
+
             var nuevoUsuario = new Usuario
             {
                 Alias = Alias,
@@ -92,7 +138,6 @@ namespace VozDelEsteMaui3.ViewModels
                 EsAdmin = EsAdmin
             };
 
-            // Aquí podrías llamar a tu repositorio para guardar
             var exito = await _usuarioRepositorio.AgregarAsync(nuevoUsuario);
             if (exito) await Application.Current.MainPage.DisplayAlert("Exito", "Usuario creado correctamente", "OK");
             else await Application.Current.MainPage.DisplayAlert("Error", "Hubo un error", "OK");
