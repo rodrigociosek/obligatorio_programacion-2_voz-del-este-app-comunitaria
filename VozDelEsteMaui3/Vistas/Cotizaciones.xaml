@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VozDelEsteMaui3.Vistas.Cotizaciones"
+             Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16" HorizontalOptions="Center">
+
+            <!-- Título -->
+            <Label Text="Cotización Actual"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Tarjetas en FlexLayout con Wrap -->
+            <FlexLayout Wrap="Wrap" Direction="Row" JustifyContent="Start" AlignItems="Start">
+
+                <!-- Euro -->
+                <Border StrokeThickness="0" Margin="8" WidthRequest="400" HeightRequest="260" StrokeShape="RoundRectangle 12">
+                    <Grid>
+                        <Image Source="eur.png" Aspect="AspectFill" />
+                        <BoxView BackgroundColor="#80000000" />
+                        <VerticalStackLayout Padding="12" VerticalOptions="Center">
+                            <Label Text="Euro" FontAttributes="Bold" FontSize="18" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="{Binding CotizacionActual.UyuEur, StringFormat='U$S {0:F2}'}"
+                                   FontSize="40" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="End"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <!-- Dólar -->
+                <Border StrokeThickness="0" Margin="8" WidthRequest="400" HeightRequest="260" StrokeShape="RoundRectangle 4">
+                    <Grid>
+                        <Image Source="usd.png" Aspect="AspectFill" />
+                        <BoxView BackgroundColor="#80000000" />
+                        <VerticalStackLayout Padding="12" VerticalOptions="Center">
+                            <Label Text="Dólar" FontAttributes="Bold" FontSize="16" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="{Binding CotizacionActual.UyuUsd, StringFormat='U$S {0:F2}'}"
+                                   FontSize="40" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <!-- Peso Argentino -->
+                <Border StrokeThickness="0" Margin="8" WidthRequest="400" HeightRequest="260" StrokeShape="RoundRectangle 12">
+                    <Grid>
+                        <Image Source="ars.png" Aspect="AspectFill" />
+                        <BoxView BackgroundColor="#80000000" />
+                        <VerticalStackLayout Padding="12" VerticalOptions="Center">
+                            <Label Text="Peso Argentino" FontAttributes="Bold" FontSize="16" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="{Binding CotizacionActual.UyuArs, StringFormat='U$S {0:F2}'}"
+                                   FontSize="40" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <!-- Real -->
+                <Border StrokeThickness="0" Margin="8" WidthRequest="400" HeightRequest="260" StrokeShape="RoundRectangle 12">
+                    <Grid>
+                        <Image Source="brl.png" Aspect="AspectFill" />
+                        <BoxView BackgroundColor="#80000000" />
+                        <VerticalStackLayout Padding="12" VerticalOptions="Center">
+                            <Label Text="Real" FontAttributes="Bold" FontSize="20" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="{Binding CotizacionActual.UyuBrl, StringFormat='U$S {0:F2}'}"
+                                   FontSize="40" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+            </FlexLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

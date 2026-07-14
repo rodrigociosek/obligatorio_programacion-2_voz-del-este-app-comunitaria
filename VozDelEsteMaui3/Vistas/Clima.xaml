@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VozDelEsteMaui3.ViewModels"
+             xmlns:m="clr-namespace:VozDelEsteMaui3.Modelos"
+             x:Class="VozDelEsteMaui3.Vistas.Clima"
+             x:DataType="vm:ClimaViewModel"
+             Title="">
+
+    <Grid>
+        <Image Source="{Binding FondoUrl}" Aspect="AspectFill" />
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Label Text="Maldonado"
+                           FontSize="32"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="{Binding ClimaActual.Temperatura, StringFormat='{0}°C'}"
+                           FontSize="64"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="{Binding ClimaActual.Estado}"
+                           FontSize="20"
+                           TextColor="White"
+                           HorizontalOptions="Center" 
+                           />
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <Label Text="{Binding ClimaActual.TemperaturaMaxima, StringFormat='Máx: {0}°'}"
+                               TextColor="White" />
+                        <Label Text="{Binding ClimaActual.TemperaturaMinima, StringFormat='Mín: {0}°'}"
+                               TextColor="White" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Pronóstico extendido en filas -->
+                <CollectionView ItemsSource="{Binding Pronostico}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:ModeloClima">
+                            <Border
+                                StrokeShape="RoundRectangle 12"
+                                StrokeThickness="1"
+                                Background="#aaa3c7d6"
+                                Margin="0,3">
+
+                                <Grid Padding="10" ColumnDefinitions="2*,*,3*" RowDefinitions="Auto"
+                                      HorizontalOptions="Fill"
+                                      
+                                      VerticalOptions="Center"
+                                      >
+                                    <Label Text="{Binding Fecha, StringFormat='{0:dd/MM HH:mm}'}"
+                                           Grid.Column="0"
+                                       FontSize="16"
+                                       TextColor="White"
+                                           VerticalOptions="Center"/>
+
+                                    <Image Source="{Binding IconoUrl}"
+                                       WidthRequest="30"
+                                       HeightRequest="30"
+                                       Grid.Column="1" 
+                                           />
+
+                                    <HorizontalStackLayout Grid.Column="2" Spacing="8" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Label Text="{Binding TemperaturaMinima, StringFormat='Min: {0}°'}"
+                                           TextColor="White" />
+                                    <Label Text="{Binding TemperaturaMaxima, StringFormat='Max: {0}°'}"
+                                           TextColor="White" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

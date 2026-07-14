@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="VozDelEsteMaui3.Vistas.AgregarPatrocinador"
+             Title="">
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,auto,*,auto" RowSpacing="20" Padding="30,10">
+        <!-- Nombre -->
+        <Label Text="Nombre del patrocinador" Grid.Row="0" />
+        <Entry Text="{Binding Patrocinador.Nombre}" Grid.Row="1" />
+
+        <!-- Logo -->
+        <Label Text="URL del logo" Grid.Row="2" />
+        <Entry Text="{Binding Patrocinador.LogoUrl}" Grid.Row="3" Margin="0,0,0,0"/>
+            <Label Text="Direccion seleccionada:" HorizontalOptions="Center" Grid.Row="4" FontSize="20"></Label>
+
+            <FlexLayout Direction="Row" Grid.Row="5" HorizontalOptions="Center" >
+                <Label Text="{Binding Patrocinador.Latitud, StringFormat='Latitud: {0}'}" FontSize="16" Margin="0,0,50,0"/>
+                <Label Text="{Binding Patrocinador.Longitud, StringFormat='Longitud: {0}'} " FontSize="16" />
+            </FlexLayout>
+
+            <!-- Mapa -->
+        <FlexLayout Grid.Row="6"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+            <WebView x:Name="LeafletWebView"
+                 FlexLayout.Grow="1"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill" 
+                    Margin="20"
+                     />
+        </FlexLayout>
+            <Button Grid.Row="7"
+    Text="Crear patrocinador"
+    Command="{Binding CrearPatrocinadorCommand}"
+                    HorizontalOptions="Fill"/>
+    </Grid>
+    </ScrollView>
+</ContentPage>

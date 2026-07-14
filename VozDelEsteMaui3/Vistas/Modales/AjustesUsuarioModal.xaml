@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VozDelEsteMaui3.ViewModels"
+             xmlns:m="clr-namespace:VozDelEsteMaui3.Modelos"
+             x:Class="VozDelEsteMaui3.Vistas.Modales.AjustesUsuarioModal"
+             Title="AjustesUsuarioModal"
+             BackgroundColor="#80000000"
+             NavigationPage.HasNavigationBar="False">
+
+    <Border WidthRequest="300"
+            HeightRequest="350"
+            StrokeShape="RoundRectangle 12"
+            HorizontalOptions="Center">
+
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <FlexLayout>
+                <CheckBox IsChecked="{Binding Preferencias.MostrarClima}" />
+                <Label Text="Mostrar clima"
+                       
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </FlexLayout>
+
+            <FlexLayout>
+                <CheckBox IsChecked="{Binding Preferencias.MostrarCotizaciones}" />
+                <Label Text="Mostrar cotizaciones"
+                       
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </FlexLayout>
+
+            <FlexLayout>
+                <CheckBox IsChecked="{Binding Preferencias.MostrarNoticias}" />
+                <Label Text="Mostrar noticias"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </FlexLayout>
+
+            <FlexLayout>
+                <CheckBox IsChecked="{Binding Preferencias.MostrarPeliculas}" />
+                <Label Text="Mostrar películas"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </FlexLayout>
+
+            <Button Text="Aceptar"
+                    Margin="0,20"
+                    Command="{Binding AplicarCambiosCommand}" />
+
+        </VerticalStackLayout>
+    </Border>
+</ContentPage>

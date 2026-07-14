@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VozDelEsteMaui3.Vistas.Patrocinadores"
+             x:Name="PatrocinadoresPagina"
+             Title="">
+    <StackLayout Padding="10,30">
+        <Button Text="Agregar Patrocinador"
+                HorizontalOptions="Start"
+                Command="{Binding AgregarPatrocinadorCommand}"/>
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Patrocinadores}"
+                        Margin="0,20,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="{StaticResource GrisClaro}" Padding="5" StrokeShape="RoundRectangle 12">
+                        <Grid Padding="10" ColumnSpacing="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Logo -->
+                            <Border StrokeShape="Ellipse" WidthRequest="80" HeightRequest="80" BackgroundColor="{StaticResource GrisMedio}" InputTransparent="True">
+                                <Image Grid.Column="0"
+                                       Source="{Binding LogoUrl}"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start"/>
+                            </Border>
+
+                            <Label Grid.Column="1"
+                                   TextColor="{StaticResource GrisNoche}"
+                                   Text="{Binding Nombre}"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"/>
+
+                            <FlexLayout Grid.Column="2" Direction="Row" Wrap="Wrap" HorizontalOptions="End" JustifyContent="End" >
+                                <Button 
+                                    Margin="3"
+                                    Text="📍 Ver ubicacion"
+                                    MaximumHeightRequest="50"
+                                    TextColor="White"
+                                    Command="{Binding Source={x:Reference PatrocinadoresPagina}, Path=BindingContext.VerUbicacionCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="{StaticResource Verde}"
+                                    />
+
+                                <Button 
+                                    Margin="3"
+                                    Text="✏️ Editar"
+                                    TextColor="White"
+                                    MaximumHeightRequest="50"
+                                    Command="{Binding Source={x:Reference PatrocinadoresPagina}, Path=BindingContext.EditarCommand}"
+                                    CommandParameter="{Binding Id}"
+                                    BackgroundColor="{StaticResource Amarillo}"/>
+
+                                <!-- Eliminar -->
+                                <Button 
+                                    Margin="3"
+                                    Text="🗑️ Eliminar"
+                                    TextColor="White"
+                                    MaximumHeightRequest="50"
+                                    Command="{Binding Source={x:Reference PatrocinadoresPagina}, Path=BindingContext.EliminarCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="{StaticResource Rojo}"/>
+                            </FlexLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

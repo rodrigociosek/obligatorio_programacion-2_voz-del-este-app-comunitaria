@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VozDelEsteMaui3.Vistas.Modales.DetallePeliculaModal"
+             BackgroundColor="#e0000000"
+            NavigationPage.HasNavigationBar="False"
+             Title="">
+
+    <AbsoluteLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+        <Button Text="✕"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="24"
+                WidthRequest="70"
+                HeightRequest="70"
+                AbsoluteLayout.LayoutBounds="1,0,30,30"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                ZIndex="10"
+                Clicked="Cerrar_Clicked" />
+
+        <ScrollView >
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="Center"
+                        AlignItems="Center"
+                        Padding="20">
+
+                <VerticalStackLayout WidthRequest="200"
+                                     Spacing="10"
+                                     Margin="0,0,20,0"
+                                     VerticalOptions="Center"
+                                     >
+                    <Image Source="{Binding ImagenUrl}"
+                           Aspect="AspectFill"
+                           HeightRequest="300"
+                           WidthRequest="200"
+                           />
+                    <Label Text="{Binding Valoracion}"
+                           FontSize="24"
+                           TextColor="Orange"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout WidthRequest="250"
+                                     Spacing="10"
+                                     >
+                    <FlexLayout Wrap="Wrap" HeightRequest="110" AlignItems="Center">
+                        <Label Text="{Binding Titulo}"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               />
+                        <Label Text="{Binding Anio, StringFormat='({0:yyyy})'}"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+
+                        <Label Text="{Binding GenerosTexto}"
+                           FontSize="12"
+                           TextColor="Gray"
+                           LineBreakMode="TailTruncation" />
+
+                        <ScrollView>
+                            <Label Text="{Binding Descripcion}"
+                               FontSize="14"
+                               TextColor="White"
+                               LineBreakMode="WordWrap"
+                               Margin="0,10,0,0" />
+                        </ScrollView>
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </FlexLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+
+</ContentPage>

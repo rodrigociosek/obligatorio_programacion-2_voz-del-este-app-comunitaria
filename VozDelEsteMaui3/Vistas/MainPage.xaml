@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VozDelEsteMaui3.ViewModels"
+             x:Class="VozDelEsteMaui3.Vistas.MainPage"
+             x:DataType="vm:MainPageViewModel"
+             Title="">
+    <Grid RowDefinitions="Auto,*"
+    Padding="30,10,30,10"
+    RowSpacing="20">
+
+        <HorizontalStackLayout Grid.Row="0"
+      HorizontalOptions="Start"
+      VerticalOptions="Start"
+      Spacing="16">
+            <Border WidthRequest="62"
+            HeightRequest="62"
+            StrokeShape="Ellipse"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            StrokeThickness="0">
+                <Image Source="{Binding UsuarioActual.FotoUrl}"
+            Aspect="AspectFill"
+            BackgroundColor="{StaticResource GrisMedio}" />
+            </Border>
+            <Label Text="{Binding UsuarioActual.Alias}"
+         FontSize="24"
+                TextColor="{StaticResource ColorPrimarioOscuro}"
+         VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="0"
+        HorizontalOptions="End"
+        VerticalOptions="Start"
+>
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding AbrirMenuUsuarioCommand}" />
+            </HorizontalStackLayout.GestureRecognizers>
+            <Image Source="ajustes.png"
+                   WidthRequest="50"/>
+        </HorizontalStackLayout>
+
+        <!-- Contenido principal -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- Boton Clima -->
+                <Border IsVisible="{Binding Preferencias.MostrarClima}"
+                Padding="0"
+                Margin="0"
+                HeightRequest="200"
+                HorizontalOptions="Fill"
+                StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+                    
+                    <Grid>
+                        <Image Source="clima.jpg"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill" />
+
+                        <BoxView BackgroundColor="#50000000"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill" />
+
+                        <Label Text="Clima"
+                        FontSize="24"
+                        TextColor="{StaticResource BlancoSuave}"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="20"
+                        ZIndex="1" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrPaginaClimaCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <!-- Boton Cotizaciones -->
+                <Border IsVisible="{Binding Preferencias.MostrarCotizaciones}"
+                Padding="0"
+                Margin="0"
+                HeightRequest="200"
+                HorizontalOptions="Fill"
+                StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <Grid>
+                        <Image Source="cotizaciones.jpg"
+                  Aspect="AspectFill"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" />
+
+                        <BoxView BackgroundColor="#50000000"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" />
+
+                        <Label Text="Cotizaciones"
+                  FontSize="24"
+                  TextColor="{StaticResource BlancoSuave}"
+                  FontAttributes="Bold"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Start"
+                  Margin="20"
+                  ZIndex="1" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrPaginaCotizacionesCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <!--  Boton Noticias -->
+                <Border IsVisible="{Binding Preferencias.MostrarNoticias}"
+                    Padding="0"
+                    Margin="0"
+                    HeightRequest="200"
+                    HorizontalOptions="Fill"
+                    StrokeThickness="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <Grid>
+                        <Image Source="noticias.jpg"
+                  Aspect="AspectFill"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill"/>
+
+                        <BoxView BackgroundColor="#a0000000"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" />
+
+                        <Label Text="Noticias"
+                  FontSize="24"
+                  TextColor="{StaticResource BlancoSuave}"
+                  FontAttributes="Bold"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Start"
+                  Margin="20"
+                  ZIndex="1" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrPaginaNoticiasCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <!-- Boton Peliculas -->
+                <Border IsVisible="{Binding Preferencias.MostrarPeliculas}"
+Padding="0"
+Margin="0"
+HeightRequest="200"
+HorizontalOptions="Fill"
+StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <Grid>
+                        <Image Source="peliculas.jpg"
+                  Aspect="AspectFill"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" />
+
+                        <BoxView BackgroundColor="#a0000000"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" />
+
+                        <Label Text="Peliculas"
+                  FontSize="24"
+                  TextColor="{StaticResource BlancoSuave}"
+                  FontAttributes="Bold"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Start"
+                  Margin="20"
+                  ZIndex="1" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrPaginaPeliculasCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <Border IsVisible="{Binding Preferencias.MostrarPatrocinadores}"
+Padding="0"
+Margin="0"
+HeightRequest="200"
+HorizontalOptions="Fill"
+StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <Grid>
+                        <Image Source="patrocinadores.jpg"
+      Aspect="AspectFill"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill" />
+
+                        <BoxView BackgroundColor="#70000000"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill" />
+
+                        <Label Text="Patrocinadores"
+      FontSize="24"
+      TextColor="{StaticResource BlancoSuave}"
+      FontAttributes="Bold"
+      HorizontalOptions="Start"
+      VerticalOptions="Start"
+      Margin="20"
+      ZIndex="1" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrPaginaPatrocinadoresCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+
+</ContentPage>

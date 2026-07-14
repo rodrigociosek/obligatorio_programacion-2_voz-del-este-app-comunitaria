@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VozDelEsteMaui3.Vistas.Modales.DetalleNoticiaModal"
+              BackgroundColor="#e0000000"
+            NavigationPage.HasNavigationBar="False"
+             Title="">
+    <AbsoluteLayout>
+
+        <Button Text="✕"
+        BackgroundColor="Transparent"
+        TextColor="White"
+        FontSize="24"
+        WidthRequest="70"
+        HeightRequest="70"
+        AbsoluteLayout.LayoutBounds="0.9,0,30,30"
+        AbsoluteLayout.LayoutFlags="PositionProportional"
+        ZIndex="10"
+        Clicked="Cerrar_Clicked" />
+
+        <!-- Contenido principal -->
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <FlexLayout Direction="Column"
+            Wrap="Wrap"
+            Padding="50">
+                <!-- Imagen destacada -->
+                <Image Source="{Binding Imagen}"
+                       Aspect="AspectFill"
+                       HeightRequest="200"
+                       Clip="RoundRectangle 12"
+                       Margin="0,0,0,10" />
+
+                <!-- Título -->
+                <Label Text="{Binding Titulo}"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       LineBreakMode="WordWrap" />
+
+                <!-- Fecha y autores -->
+                <Label Text="{Binding FechaAutoresTexto}"
+                       FontSize="12"
+                       TextColor="Gray"
+                       LineBreakMode="TailTruncation" />
+
+                <!-- Descripción -->
+                <Label Text="{Binding Descripcion}"
+                       FontSize="14"
+                       TextColor="White"
+                       LineBreakMode="WordWrap"
+                       Margin="0,10,0,20" />
+
+                <!-- Botón para abrir link -->
+                <Button Text="Ir al Link"
+                        BackgroundColor="{StaticResource ColorPrimarioOscuro}"
+                        TextColor="White"
+                        CornerRadius="8"
+                        HorizontalOptions="Center"
+                        WidthRequest="140" 
+                        Clicked="OnIrAlLink"/>
+
+            </FlexLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+
+
+
+
+</ContentPage>

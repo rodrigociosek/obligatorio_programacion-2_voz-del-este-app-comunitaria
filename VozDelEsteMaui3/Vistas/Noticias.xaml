@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VozDelEsteMaui3.Vistas.Noticias"
+             Title=""
+             x:Name="PaginaNoticias">
+    <ScrollView>
+
+        <StackLayout Padding="30" Spacing="30" HorizontalOptions="Fill">
+            <Label Text="Noticias" FontSize="40" HorizontalTextAlignment="Center"></Label>
+            <!-- Buscador -->
+            <Grid RowDefinitions="auto" ColumnDefinitions="*,auto" ColumnSpacing="20" HorizontalOptions="Fill" MaximumWidthRequest="800">
+                <Entry Grid.Column="0"
+            x:Name="BuscadorEntry"
+            Placeholder="Buscar noticias..."
+            Text="{Binding Palabraclave}"
+                   HorizontalOptions="Fill"/>
+
+                <Button Grid.Column="1" 
+                    HorizontalOptions="Start"
+                    Text="Buscar"
+                    Command="{Binding BuscarCommand}" />
+            </Grid>
+            <!-- Lista de noticias -->
+            <CollectionView ItemsSource="{Binding Noticias}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="{StaticResource ColorPrimarioOscuro}"
+                            StrokeThickness="1"
+                            Padding="10"
+                            BackgroundColor="{StaticResource NegroSuave}"
+                            StrokeShape="RoundRectangle 8"
+                            Margin="5,0">
+                            <VerticalStackLayout Spacing="8">
+                                <Grid ColumnDefinitions="auto,*,Auto,auto" RowDefinitions="Auto,Auto,auto,auto" >
+                                <!-- Titulo -->
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                                Text="{Binding Titulo}"
+                                FontAttributes="Bold"
+                                FontSize="32"
+                                LineBreakMode="TailTruncation" />
+                                <!-- Imagen -->
+                                    <Image 
+                                Grid.Row="1"
+                                Grid.Column="0" Grid.ColumnSpan="1"
+                                Source="{Binding Imagen}"
+                                Aspect="AspectFill"
+                                HeightRequest="200"
+                                WidthRequest="200"
+                                Margin="0,0,10,0" />
+                                <!-- Descripción -->
+                                    <Label Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"
+                                Text="{Binding Descripcion}"
+                                FontSize="14"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="10"
+                                Margin="0,5,0,0" />
+                                </Grid>
+                                <!-- Fecha -->
+                                <Label Grid.Column="2" Grid.Row="2" Grid.RowSpan="1"
+                                       Text="{Binding FechaPublicacion}"
+                                       FontSize="12"
+                                       TextColor="Gray" />
+
+                                <!-- Boton -->
+                                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                                        Text="Ver más"
+                                        Command="{Binding BindingContext.VerNoticiaCommand, Source={x:Reference PaginaNoticias}}"
+                                        CommandParameter="{Binding .}"
+                                        VerticalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

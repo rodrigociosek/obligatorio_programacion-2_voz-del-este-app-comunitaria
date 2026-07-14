@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VozDelEsteMaui3.ViewModels"
+             x:Class="VozDelEsteMaui3.Vistas.Login"
+             x:DataType="vm:LoginViewModel"
+             Title="">
+    <VerticalStackLayout
+       Padding="50">
+         
+        <Image
+            Source="logo.png"
+            MaximumHeightRequest="200"
+            MaximumWidthRequest="200"/>
+
+        <FlexLayout 
+         HorizontalOptions="Center"
+         Direction="Column"
+            Margin="0,50,0,30">
+            <Entry 
+            FlexLayout.Grow="1"
+            Text="{Binding Usuario}"
+            MaximumWidthRequest="800"
+            Placeholder="Ingrese su usuario"
+            Margin="0,0,0,20"/>
+            <Entry 
+            Text="{Binding Clave}"
+            FlexLayout.Grow="3"
+            MaximumWidthRequest="800"
+            Placeholder="Ingrese su contraseña"/>
+        </FlexLayout>
+        <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,*" RowSpacing="30" ColumnSpacing="10"
+          HorizontalOptions="Fill"
+            MaximumWidthRequest="800"
+          Margin="0,20,0,0">
+
+            <Button Grid.Row="0" Grid.Column="0"
+            Text="Ingresar"
+            Command="{Binding LoginCommand}"
+                    MaximumWidthRequest="400"
+            />
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+   Text="Ingresar con huella" IsVisible="{Binding EsMobil}"
+   Command="{Binding IngresarConHuellaCommand}"
+                    MaximumWidthRequest="800"
+   />
+            <Button Grid.Row="0" Grid.Column="1"
+            Text="Registrarse"
+            Command="{Binding RegistroCommand}"
+                    MaximumWidthRequest="400"
+            />
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

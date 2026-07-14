@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VozDelEsteMaui3.Vistas.Registro"
+             xmlns:vm="clr-namespace:VozDelEsteMaui3.ViewModels"
+             x:DataType="vm:RegistroViewModel"
+             Title="">
+   <ScrollView>
+      <VerticalStackLayout Padding="30,0" Spacing="15">
+         <Label Text="Registro de Usuario" FontSize="24" HorizontalOptions="Center" />
+
+         <Entry Placeholder="Alias" Text="{Binding Alias}" />
+         <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding Clave}" />
+         <Entry Placeholder="Nombre completo" Text="{Binding NombreCompleto}" />
+         <Entry Placeholder="Dirección" Text="{Binding Direccion}" />
+         <Entry Placeholder="Teléfono" Text="{Binding Telefono}" Keyboard="Telephone" />
+         <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" />
+        <Button Text="Sacate una foto (opcional)" Command="{Binding SacarFotoCommand}" />
+        <Image Source="{Binding FotoUrl}" HeightRequest="100" WidthRequest="100"/>
+        
+         <Button Text="Registrarsee" Command="{Binding RegistrarCommand}" />
+      </VerticalStackLayout>
+   </ScrollView>
+
+</ContentPage>
