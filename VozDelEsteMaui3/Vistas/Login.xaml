@@ -23,8 +23,9 @@
             MaximumWidthRequest="800"
             Placeholder="Ingrese su usuario"
             Margin="0,0,0,20"/>
-            <Entry 
+            <Entry
             Text="{Binding Clave}"
+            IsPassword="True"
             FlexLayout.Grow="3"
             MaximumWidthRequest="800"
             Placeholder="Ingrese su contraseña"/>
